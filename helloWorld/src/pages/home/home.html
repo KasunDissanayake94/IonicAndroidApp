@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      MrBin
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+        <ion-label>Select language</ion-label>
+        <ion-select name="language" [(ngModel)]="language">
+          <ion-option>Java</ion-option>
+          <ion-option>Python</ion-option>
+          <ion-option>C</ion-option>
+          <ion-option>C++</ion-option>
+          <ion-option>Racket</ion-option>
+          <ion-option>Android</ion-option>
+          <ion-option>Objective C</ion-option>
+          <ion-option>Node</ion-option>
+          <ion-option>Angular</ion-option>
+          <ion-option>Express</ion-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <ion-searchbar (keyup)="findData($event)"></ion-searchbar>
+
+        <div *ngIf="repos">
+
+        <ion-list>
+          <ion-item *ngFor="let res of repos">
+            <ion-avatar item-left>
+              <img src="{{res.owner.avatar_url}}">
+            </ion-avatar>
+            <h2>{{res.name}}</h2>
+            <p><ion-badge item-right>{{res.full_name}}</ion-badge></p>
+            <button ion-button="" (click)="callData(res.id)">Click Here</button>
+          </ion-item>
+        </ion-list>
+
+        </div>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
